@@ -8,9 +8,10 @@ app.use(express.json());
 app.use(cors()); // Включите cors
 
 // Подключение к базе данных MongoDB
-mongoose.connect('mongodb://localhost:27017/referralApp', { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log('Connected to MongoDB'))
     .catch(err => console.error('Could not connect to MongoDB...', err));
+
 
 // Маршрут для генерации реферальной ссылки
 app.post('/generate-referral', async (req, res) => {
