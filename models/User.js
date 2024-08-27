@@ -1,13 +1,10 @@
 const mongoose = require('mongoose');
 
-// Определение схемы пользователя
 const userSchema = new mongoose.Schema({
     username: { type: String, required: true, unique: true },
-    referralLink: { type: String, unique: true },
-    referredCount: { type: Number, default: 0 } // Количество приглашенных пользователей
+    referralLink: { type: String },
+    referredCount: { type: Number, default: 0 },
+    appleCount: { type: Number, default: 0 } // Поле для хранения количества яблок
 });
 
-// Создание модели пользователя
-const User = mongoose.model('User', userSchema);
-
-module.exports = User;
+module.exports = mongoose.model('User', userSchema);
